@@ -1,0 +1,25 @@
+<div class="content-section introduction">
+    <div>
+        <span>FileUpload is an advanced uploader with drag and drop support, multi file uploads, auto uploading, progress tracking and
+            validations.</span>
+    </div>
+</div>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<h3>Basic</h3>
+<p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
+
+<h3>Basic with Auto</h3>
+<p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+
+<h3 class="first">Advanced</h3>
+<p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+        multiple="multiple" accept="image/*" maxFileSize="1000000">
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </ng-template>
+</p-fileUpload>
+
