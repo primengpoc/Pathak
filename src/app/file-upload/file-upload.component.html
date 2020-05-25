@@ -1,20 +1,20 @@
+<br/>
 <div class="content-section introduction">
     <div>
-        <span>FileUpload is an advanced uploader with drag and drop support, multi file uploads, auto uploading, progress tracking and
+        <p><span>FileUpload is an advanced uploader with drag and drop support, multi file uploads, auto uploading, progress tracking and
             validations.</span>
+        </p>
     </div>
 </div>
-
-<p-toast [style]="{marginBottom: '80px'}"></p-toast>
 
 <h3>Basic</h3>
 <p-fileUpload  name="demo[]" url="http://localhost:3004/posts" accept="image/*" maxFileSize="1000000" 
             (onUpload)="onBasicUpload($event)"></p-fileUpload>
-
+<br/>
 <h3>Basic with Auto</h3>
 <p-fileUpload #fubauto name="demo[]" url="http://localhost:3004/posts" accept="image/*"
     maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
-
+<br/>
 <h3 class="first">Advanced</h3>
 <p-fileUpload name="demo[]" url="http://localhost:3004/posts" (onUpload)="onUpload($event)"
         multiple="multiple" accept="image/*" maxFileSize="1000000">
@@ -24,4 +24,6 @@
         </ul>
     </ng-template>
 </p-fileUpload>
+
+<p-toast [style]="{marginTop: '450px'}"></p-toast>
 
