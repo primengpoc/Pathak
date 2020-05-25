@@ -17,7 +17,6 @@ export class FileUploadComponent {
       for (const file of event.files) {
           this.uploadedFiles.push(file);
       }
-
       this.messageService.add({severity: 'info', summary: 'Success', detail: 'File Uploaded'});
   }
 
