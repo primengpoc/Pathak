@@ -14,11 +14,13 @@ import {TabViewModule} from 'primeng/tabview';
 import {CodeHighlighterModule} from 'primeng/codehighlighter';
 
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
