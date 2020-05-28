@@ -9,7 +9,7 @@
 
 <h3>Basic</h3>
 <p-fileUpload  name="demo[]" url="http://localhost:3004/posts" accept="image/*" maxFileSize="1000000" 
-            (onUpload)="onBasicUpload($event)"></p-fileUpload>
+    chooseLabel="Choose File" (onUpload)="onBasicUpload($event)"></p-fileUpload>
 <br/>
 <h3>Basic with Auto</h3>
 <p-fileUpload #fubauto name="demo[]" url="http://localhost:3004/posts" accept="image/*"
