@@ -1,1 +1,100 @@
-<p>home works!</p>
+<p-table #dt [columns]="cols" [value]="jobslist" exportFilename="Routing">
+    <ng-template pTemplate="caption">
+      <div class="ui-helper-clearfix">
+        Route Information
+        <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:right"></button>
+        <!--<button type="button" pButton icon="fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>-->
+      </div>
+    </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [ngClass]="rowData.curdFlag == 'U' ? 'updateColor' : null">
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown #ddorg name="org" [(ngModel)]="rowData.org"  (onChange)="updateCURDFlagOnChange(rowData)" appendTo="body" filter="true" (onFocus)="setSelectedOption(ddorg,rowData.org,rowData.org)" [options]="orgList" ></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.org}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown #ddpartNum name="partNum" [(ngModel)]="rowData.partNum"  (onChange)="updateCURDFlagOnChange(rowData)" appendTo="body" filter="true" (onFocus)="setSelectedOption(ddpartNum,rowData.partNum,rowData.partNum)" [options]="partNumList" ></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.partNum}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown #ddbomAlt name="bomAlt" [(ngModel)]="rowData.bomAlt"  (onChange)="updateCURDFlagOnChange(rowData)" appendTo="body" filter="true" (onFocus)="setSelectedOption(ddbomAlt,rowData.bomAlt,rowData.bomAlt)" [options]="bomAltList" ></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.bomAlt}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown #ddrouteAlt name="routeAlt" [(ngModel)]="rowData.routeAlt"  (onChange)="updateCURDFlagOnChange(rowData)" appendTo="body" filter="true" (onFocus)="setSelectedOption(ddrouteAlt,rowData.routeAlt,rowData.routeAlt)" [options]="routeAltList" ></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.routeAlt}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-dropdown #ddline name="line" [(ngModel)]="rowData.line"  (onChange)="updateCURDFlagOnChange(rowData)" appendTo="body" filter="true" (onFocus)="setSelectedOption(ddline,rowData.line,rowData.line)" [options]="lineList" ></p-dropdown>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.line}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+        <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <!-- <p-calendar  [(ngModel)]="rowData.startDate" (onChange)="updateCURDFlagOnChange(rowData)" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2050" ></p-calendar> -->
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.startDate | date: 'MM/dd/yyyy'}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <!-- <p-calendar [(ngModel)]="rowData.endDate"  (onChange)="updateCURDFlagOnChange(rowData)" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2050"></p-calendar> -->
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.endDate | date: 'MM/dd/yyyy'}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+  
+          <td pEditableColumn>
+            <p-cellEditor>
+              <ng-template pTemplate="output">
+                {{rowData.curdFlag}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+        </tr>
+      </ng-template>
+  </p-table>
+  
+  <p-fileUpload  customUpload="true"  maxFileSize="1000000" (uploadHandler)="onUpload($event)"  chooseLabel="Browse"></p-fileUpload>

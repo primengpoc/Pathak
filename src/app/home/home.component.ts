@@ -12,4 +12,15 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  onUpload(event) {
+    let input = event.files;
+    let reader: FileReader = new FileReader();
+    reader.readAsText(input[0]);
+    reader.onload = (e) => {
+      let csv: string = reader.result as string;
+      alert(csv);
+      console.log(csv);
+    }
+  }
+
 }

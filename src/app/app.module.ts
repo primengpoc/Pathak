@@ -12,15 +12,19 @@ import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
 import {CodeHighlighterModule} from 'primeng/codehighlighter';
+import {TableModule} from 'primeng/table';
+import {FullCalendarModule} from 'primeng/fullcalendar';
 
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HomeComponent } from './home/home.component';
+import { CalenderComponent } from './calender/calender.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
-    HomeComponent
+    HomeComponent,
+    CalenderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { HomeComponent } from './home/home.component';
     ButtonModule,
     TabViewModule,
     CodeHighlighterModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule,
+    FullCalendarModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
